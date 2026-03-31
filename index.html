@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internet Safety — Teacher Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f3;
+    color: #1a1a1a;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 2rem auto;
+    background: #fff;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  }
+
+  /* HEADER */
+  .guide-header {
+    background: #1b2a4a;
+    color: #fff;
+    padding: 2rem 2.5rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .guide-header-left { flex: 1; }
+  .logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; }
+  .logo-dots { display: flex; gap: 5px; align-items: center; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .logo-text { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+  .guide-badge {
+    display: inline-block;
+    background: #fff;
+    color: #1b2a4a;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+  }
+  .guide-title { font-size: 32px; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+  .guide-sub { font-size: 13px; color: rgba(255,255,255,0.7); }
+  .guide-header-img {
+    width: 160px;
+    min-width: 160px;
+    height: 110px;
+    background: linear-gradient(135deg, #2d4a7a 0%, #1b2a4a 100%);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    border: 1.5px solid rgba(255,255,255,0.15);
+  }
+  .header-icon { font-size: 36px; }
+  .header-icon-sub { font-size: 11px; color: rgba(255,255,255,0.6); }
+
+  /* PARTNER ROW */
+  .partner-row {
+    padding: 0.75rem 2.5rem;
+    background: #f9f9f7;
+    border-bottom: 1px solid #e8e8e4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #666;
+  }
+  .partner-tag {
+    background: #e8ecf5;
+    color: #1b2a4a;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+
+  /* BODY */
+  .guide-body { padding: 2rem 2.5rem; }
+
+  /* SECTION HEADERS */
+  .section-header {
+    background: #1b2a4a;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0.6rem 1.25rem;
+    margin: 2rem -2.5rem 1.25rem;
+    border-radius: 0;
+  }
+
+  /* BACKGROUND */
+  .bg-block {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .bg-text { flex: 1; }
+  .bg-text p { margin-bottom: 0.75rem; font-size: 13.5px; color: #333; line-height: 1.65; }
+  .bg-text p:last-child { margin-bottom: 0; }
+  .bg-stat {
+    background: #f0f3fa;
+    border-left: 3px solid #1b2a4a;
+    padding: 0.75rem 1rem;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 0.75rem;
+  }
+  .bg-stat .stat-num { font-size: 22px; font-weight: 700; color: #1b2a4a; }
+  .bg-stat .stat-label { font-size: 12px; color: #555; margin-top: 2px; }
+
+  /* CURRICULUM BOX */
+  .curriculum-box {
+    background: #eef1f9;
+    border: 1px solid #c8d0e8;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+  }
+  .curriculum-box h4 { font-size: 12px; font-weight: 700; color: #1b2a4a; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.6rem; }
+  .curriculum-item { display: flex; gap: 8px; margin-bottom: 0.4rem; font-size: 12.5px; color: #333; }
+  .curriculum-item .ci-tag {
+    background: #1b2a4a;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+
+  /* LESSON CARDS */
+  .lesson-card {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0;
+    border: 1px solid #e0e0da;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+  .lesson-left {
+    background: #f5f7fc;
+    padding: 1rem;
+    border-right: 1px solid #e0e0da;
+  }
+  .lesson-thumb {
+    width: 100%;
+    height: 80px;
+    background: #1b2a4a;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .lesson-thumb::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 18px;
+    height: 18px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.7);
+  }
+  .film-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1b2a4a;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+  }
+  .film-link::before { content: '▶'; font-size: 9px; color: #1b2a4a; }
+  .lesson-meta { margin-top: auto; }
+  .meta-label { font-size: 10.5px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+  .meta-value { font-size: 12px; font-weight: 600; color: #333; margin-bottom: 0.5rem; }
+  .grade-tag {
+    display: inline-block;
+    background: #1b2a4a;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+  }
+  .outcome-tag {
+    display: inline-block;
+    background: #e8ecf5;
+    color: #1b2a4a;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    border: 1px solid #c8d0e8;
+  }
+  .lesson-right { padding: 1rem 1.25rem; }
+  .lesson-title-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem; }
+  .lesson-num-badge {
+    background: #1b2a4a;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .lesson-title { font-size: 15px; font-weight: 700; color: #1b2a4a; margin-bottom: 0.5rem; }
+  .lesson-body { font-size: 13px; color: #333; line-height: 1.6; }
+  .lesson-body p { margin-bottom: 0.5rem; }
+  .lesson-body ul { padding-left: 1.1rem; margin-bottom: 0.5rem; }
+  .lesson-body ul li { margin-bottom: 0.25rem; }
+  .lesson-body strong { font-weight: 600; }
+  .sensitive-note {
+    background: #fff8e8;
+    border-left: 3px solid #d4830a;
+    padding: 0.5rem 0.75rem;
+    font-size: 12px;
+    color: #7a4a00;
+    border-radius: 0 4px 4px 0;
+    margin-top: 0.75rem;
+  }
+
+  /* RESOURCES */
+  .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem; }
+  .resource-item {
+    background: #f5f7fc;
+    border: 1px solid #e0e4f0;
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    font-size: 12.5px;
+  }
+  .resource-item a { color: #1b2a4a; font-weight: 600; text-decoration: underline; }
+  .resource-item p { color: #555; font-size: 12px; margin-top: 2px; }
+
+  /* FOOTER */
+  .guide-footer {
+    background: #f5f7fc;
+    border-top: 1px solid #e0e4f0;
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #888;
+    margin-top: 2rem;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: #fff; font-size: 12px; }
+    .page { max-width: 100%; margin: 0; box-shadow: none; }
+    .section-header { margin-left: -2.5rem; margin-right: -2.5rem; }
+    .lesson-card { break-inside: avoid; }
+    a { text-decoration: none; color: inherit; }
+    a[href]::after { content: " (" attr(href) ")"; font-size: 10px; color: #666; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="guide-header">
+    <div class="guide-header-left">
+      <div class="logo-row">
+        <div class="logo-dots">
+          <div class="dot" style="background:#e05a5a"></div>
+          <div class="dot" style="background:#e0944a"></div>
+          <div class="dot" style="background:#4a9e6e"></div>
+          <div class="dot" style="background:#4a6ea8"></div>
+          <div class="dot" style="background:#7a4ab0"></div>
+          <div class="dot" style="background:#4ab0c0"></div>
+        </div>
+        <span class="logo-text">Binogi</span>
+      </div>
+      <div class="guide-badge">Teacher Guide</div>
+      <div class="guide-title">Internet Safety</div>
+      <div class="guide-sub">Grades 7–9 &nbsp;·&nbsp; Nova Scotia / CAMET Curriculum &nbsp;·&nbsp; English</div>
+    </div>
+    <div class="guide-header-img">
+      <div class="header-icon">💬🔒</div>
+      <div class="header-icon-sub">Digital Citizenship</div>
+    </div>
+  </div>
+
+  <!-- PARTNER ROW -->
+  <div class="partner-row">
+    <span>Curriculum connections:</span>
+    <span class="partner-tag">Citizenship 9</span>
+    <span class="partner-tag">Social Studies 7–8</span>
+    <span class="partner-tag">ELA 7–9</span>
+    <span class="partner-tag">ICT Integration</span>
+  </div>
+
+  <div class="guide-body">
+
+    <!-- BACKGROUND -->
+    <div class="section-header">Internet Safety: Background</div>
+    <div class="bg-block">
+      <div class="bg-text">
+        <p>In our digital world, it is important that teachers talk with students about how to stay safe online. Just as we strive for schools to be safe and caring places, the internet also needs to feel safe for all students.</p>
+        <p>Canadian young people are among the most connected in the world. According to MediaSmarts' Young Canadians in a Wired World research, nearly all youth aged 9–17 are online daily, and a growing number report negative experiences including cyberbullying, unwanted contact, and exposure to harmful content.</p>
+        <p>At the same time, the internet is built on the same principles as our face-to-face communities — respect, responsibility, and the ability to navigate conflict. These skills are just as essential online as they are in the classroom or on the playground.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;min-width:160px">
+        <div class="bg-stat">
+          <div class="stat-num">23%</div>
+          <div class="stat-label">of Canadian youth report being cyberbullied (MediaSmarts)</div>
+        </div>
+        <div class="bg-stat">
+          <div class="stat-num">99%</div>
+          <div class="stat-label">of Canadian youth aged 9–17 use the internet daily</div>
+        </div>
+        <div class="bg-stat">
+          <div class="stat-num">Gr. 7</div>
+          <div class="stat-label">Peak age for first negative online experience (CCCP)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURRICULUM -->
+    <div class="curriculum-box">
+      <h4>Nova Scotia / CAMET Curriculum Connections</h4>
+      <div class="curriculum-item">
+        <span class="ci-tag">Citizenship 9</span>
+        <span>Unit 4 — Learners evaluate risks, rights, and responsibilities of digital citizens; investigate how a digital footprint influences others' perceptions; investigate the role of anonymity in media production and consumption.</span>
+      </div>
+      <div class="curriculum-item">
+        <span class="ci-tag">ICT — Outcome 2</span>
+        <span>Students follow best practices of active digital citizenship; understand laws and policies pertaining to digital tools; demonstrate ethical and legal use of information; understand the consequences of misuse.</span>
+      </div>
+      <div class="curriculum-item">
+        <span class="ci-tag">ELA 7–9</span>
+        <span>Students use critical thinking to evaluate sources, purpose, and perspective in digital media; communicate ideas responsibly using a range of media and formats.</span>
+      </div>
+    </div>
+
+    <!-- LESSON PLANS -->
+    <div class="section-header">Lesson Plans</div>
+
+    <!-- LESSON 1 -->
+    <div class="lesson-card">
+      <div class="lesson-left">
+        <div class="lesson-thumb">📰</div>
+        <a class="film-link" href="https://www.binogi.com" target="_blank">Source Criticism</a>
+        <div class="meta-label">Purpose</div>
+        <div class="meta-value">Increased awareness of source criticism and misinformation</div>
+        <div class="meta-label" style="margin-top:0.5rem">Grade</div>
+        <div><span class="grade-tag">Gr. 7</span><span class="grade-tag">Gr. 8</span><span class="grade-tag">Gr. 9</span></div>
+        <div class="meta-label" style="margin-top:0.5rem">Outcome</div>
+        <div><span class="outcome-tag">Citizenship 9 — Unit 4</span><span class="outcome-tag">ICT — Outcome 5</span></div>
+      </div>
+      <div class="lesson-right">
+        <div class="lesson-title-row">
+          <div class="lesson-title">Source Criticism & Media Literacy</div>
+          <div class="lesson-num-badge">1</div>
+        </div>
+        <div class="lesson-body">
+          <p>Watch Binogi's lesson film on <strong>Source Criticism</strong>, complete the accompanying quiz, and review key vocabulary as a class.</p>
+          <p><strong>Let students discuss in pairs:</strong></p>
+          <ul>
+            <li>Have you ever shared something online that turned out to be false? What happened?</li>
+            <li>How do you decide whether a source is trustworthy?</li>
+          </ul>
+          <p><strong>Four-corners activity:</strong> Ask "Who is most responsible for stopping the spread of misinformation?" Students move to a corner: <em>Individual users / Social media platforms / Government / Schools.</em> Each group defends their choice, then the class discusses.</p>
+          <p>Explore <a href="https://mediasmarts.ca" target="_blank">MediaSmarts.ca</a> for additional Canadian-context source-criticism resources and lesson extensions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 2 -->
+    <div class="lesson-card">
+      <div class="lesson-left">
+        <div class="lesson-thumb">💬</div>
+        <a class="film-link" href="https://www.binogi.com" target="_blank">Bullying & Harassment</a>
+        <a class="film-link" href="https://www.binogi.com" target="_blank">Cyberbullying</a>
+        <div class="meta-label">Purpose</div>
+        <div class="meta-value">Greater understanding of bullying patterns and healthy relationships online</div>
+        <div class="meta-label" style="margin-top:0.5rem">Grade</div>
+        <div><span class="grade-tag">Gr. 7</span><span class="grade-tag">Gr. 8</span><span class="grade-tag">Gr. 9</span></div>
+        <div class="meta-label" style="margin-top:0.5rem">Outcome</div>
+        <div><span class="outcome-tag">Citizenship 9 — Unit 4</span><span class="outcome-tag">ELA 7–9</span><span class="outcome-tag">NS Safe & Caring Schools</span></div>
+      </div>
+      <div class="lesson-right">
+        <div class="lesson-title-row">
+          <div class="lesson-title">Cyberbullying & Online Harassment</div>
+          <div class="lesson-num-badge">2</div>
+        </div>
+        <div class="lesson-body">
+          <p>Watch Binogi's <strong>Bullying and Harassment</strong> film. Pause at each bullying pattern — verbal bullying, peer pressure, denial, indirect bullying — and discuss as a class or in small groups.</p>
+          <p><strong>Bullying patterns to identify from the film:</strong></p>
+          <ul>
+            <li><strong>Verbal bullying:</strong> Sarcasm used to belittle.</li>
+            <li><strong>Peer pressure:</strong> Group laughter that isolates the target.</li>
+            <li><strong>Denial:</strong> "We were just joking" used to minimize harm.</li>
+            <li><strong>Indirect bullying:</strong> Witnessing and doing nothing.</li>
+          </ul>
+          <p>Follow with Binogi's <strong>Cyberbullying</strong> film. Discuss: Why might someone behave more cruelly online than face-to-face? What would you do if a friend told you they were being cyberbullied?</p>
+          <p>Explore MediaSmarts' <em>Let's Talk About… Online Harassment</em> for Canadian case studies and extension activities.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 3 -->
+    <div class="lesson-card">
+      <div class="lesson-left">
+        <div class="lesson-thumb">👣</div>
+        <a class="film-link" href="https://www.binogi.com" target="_blank">Digital Sources</a>
+        <div class="meta-label">Purpose</div>
+        <div class="meta-value">Understand how digital footprints shape identity and opportunity</div>
+        <div class="meta-label" style="margin-top:0.5rem">Grade</div>
+        <div><span class="grade-tag">Gr. 7</span><span class="grade-tag">Gr. 8</span><span class="grade-tag">Gr. 9</span></div>
+        <div class="meta-label" style="margin-top:0.5rem">Outcome</div>
+        <div><span class="outcome-tag">Citizenship 9 — Unit 4</span><span class="outcome-tag">ICT — Outcome 2</span></div>
+      </div>
+      <div class="lesson-right">
+        <div class="lesson-title-row">
+          <div class="lesson-title">Digital Footprint & Anonymity</div>
+          <div class="lesson-num-badge">3</div>
+        </div>
+        <div class="lesson-body">
+          <p>Watch Binogi's <strong>Digital Sources</strong> film. Focus discussion on the concept of the digital footprint — what it includes, who can see it, and how long it lasts.</p>
+          <p><strong>Discussion questions:</strong></p>
+          <ul>
+            <li>What would an employer, a university, or a stranger be able to find out about you from your online activity today?</li>
+            <li>Is anonymity online always a bad thing? Can you think of a situation where it protects someone?</li>
+            <li>If you could remove three things from your digital footprint right now, what would they be?</li>
+          </ul>
+          <p>Connect directly to <strong>Citizenship 9, Unit 4</strong>: "Investigate how a digital footprint influences others' perceptions" and "Investigate the role of anonymity in both the production and consumption of media."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 4 -->
+    <div class="lesson-card">
+      <div class="lesson-left">
+        <div class="lesson-thumb">🤝</div>
+        <a class="film-link" href="https://www.binogi.com" target="_blank">Consent</a>
+        <div class="meta-label">Purpose</div>
+        <div class="meta-value">Knowledge of consent and Canadian law around sharing images online</div>
+        <div class="meta-label" style="margin-top:0.5rem">Grade</div>
+        <div><span class="grade-tag">Gr. 8</span><span class="grade-tag">Gr. 9</span></div>
+        <div class="meta-label" style="margin-top:0.5rem">Outcome</div>
+        <div><span class="outcome-tag">Citizenship 9 — Unit 4</span><span class="outcome-tag">ICT — Outcome 2</span></div>
+      </div>
+      <div class="lesson-right">
+        <div class="lesson-title-row">
+          <div class="lesson-title">Consent, Privacy & Images Online</div>
+          <div class="lesson-num-badge">4</div>
+        </div>
+        <div class="lesson-body">
+          <p>Watch Binogi's <strong>Consent</strong> film. Review key vocabulary and complete the quiz.</p>
+          <p><strong>Discussion questions:</strong></p>
+          <ul>
+            <li>How can you be sure someone has consented to having their photo shared, if they haven't said so in words?</li>
+            <li>In Canada, sharing intimate images without consent is a criminal offence (Criminal Code s. 162.1). Why do you think Parliament made this a law?</li>
+            <li>What would you do if a friend received an unwanted intimate image?</li>
+          </ul>
+          <p>Use scenario cards in small groups to apply consent principles to realistic situations. Explore the <a href="https://www.cybertip.ca" target="_blank">Canadian Centre for Child Protection (cybertip.ca)</a> for student-facing reporting resources.</p>
+          <div class="sensitive-note">
+            <strong>Note for teachers:</strong> Before beginning this lesson, read the full guidance below and inform your school counsellor. Some students may have lived experience of image-based abuse. Follow NS Safe and Caring Schools protocols throughout.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 5 -->
+    <div class="lesson-card">
+      <div class="lesson-left">
+        <div class="lesson-thumb">⚖️</div>
+        <a class="film-link" href="https://www.binogi.com" target="_blank">Norms & Laws</a>
+        <a class="film-link" href="https://www.binogi.com" target="_blank">Conflict Management</a>
+        <div class="meta-label">Purpose</div>
+        <div class="meta-value">Understand who shapes norms and laws for online spaces</div>
+        <div class="meta-label" style="margin-top:0.5rem">Grade</div>
+        <div><span class="grade-tag">Gr. 7</span><span class="grade-tag">Gr. 8</span><span class="grade-tag">Gr. 9</span></div>
+        <div class="meta-label" style="margin-top:0.5rem">Outcome</div>
+        <div><span class="outcome-tag">Citizenship 9 — Unit 4 & 5</span><span class="outcome-tag">Social Studies 7–8</span></div>
+      </div>
+      <div class="lesson-right">
+        <div class="lesson-title-row">
+          <div class="lesson-title">Norms, Laws & Responsibility Online</div>
+          <div class="lesson-num-badge">5</div>
+        </div>
+        <div class="lesson-body">
+          <p>Watch Binogi's <strong>Norms and Laws</strong> film and the <strong>Conflict Management</strong> film. Complete the quizzes and review concepts.</p>
+          <p><strong>Group discussion — who is most responsible for creating safe online spaces?</strong></p>
+          <ul>
+            <li>Lawmakers and government</li>
+            <li>Social media platforms and tech companies</li>
+            <li>Parents and teachers</li>
+            <li>Each individual user</li>
+          </ul>
+          <p>Each group defends a position, then the class votes and discusses. Connect to <strong>Citizenship 9, Unit 5</strong>: "Evaluate ways to work within and outside of government structures to affect change."</p>
+          <p><strong>Extension:</strong> Australia has introduced a social media ban for users under 16. Should Canada do the same? Students write a brief position statement and share with the class.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="section-header">Links & Resources</div>
+    <div class="resource-grid">
+      <div class="resource-item">
+        <a href="https://mediasmarts.ca" target="_blank">MediaSmarts Canada</a>
+        <p>Canada's centre for digital media literacy. Curriculum-linked lessons, research, and parent resources.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://www.cybertip.ca" target="_blank">Cybertip.ca — CCCP</a>
+        <p>Canada's national tipline for reporting online child sexual exploitation. Student-facing reporting resources.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://www.binogi.com" target="_blank">Binogi Lesson Films</a>
+        <p>Animated lesson films, quizzes, and vocabulary for all five modules in this guide.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://curriculum.novascotia.ca/english-programs/course/citizenship-9" target="_blank">Citizenship 9 Outcomes — NS</a>
+        <p>Official Nova Scotia Citizenship 9 foundational outcomes and indicators document.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://www.ednet.ns.ca/psp/information-communication-technology" target="_blank">NS ICT Curriculum</a>
+        <p>Nova Scotia Information and Communication Technology integration outcomes, Grades 3–9.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://www.thinksaskatoon.ca" target="_blank">Kids Help Phone</a>
+        <p>24/7 support for young Canadians. Share with students before sensitive lessons.</p>
+      </div>
+    </div>
+
+  </div><!-- /guide-body -->
+
+  <div class="guide-footer">
+    <span>Binogi Teacher Guide — Internet Safety &nbsp;·&nbsp; Grades 7–9 &nbsp;·&nbsp; Nova Scotia / CAMET</span>
+    <span>binogi.com &nbsp;·&nbsp; 2025</span>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
